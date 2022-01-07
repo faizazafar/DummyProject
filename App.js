@@ -111,37 +111,50 @@
 
 // export default App;
 
-import React from 'react'
-import { View, Text } from 'react-native'
-import MyTextInput from './src/components/MyTextInput'
-import NEWJSON from './src/components/NEWJSON'
-import Usecontext from './src/components/Usecontext'
-import Useeffect from './src/components/Useeffect'
-import Useimperative from './src/components/Useimperative'
-import UseLayout from './src/components/UseLayout'
-import UseofImages from './src/components/UseofImages'
-import UseRef from './src/components/UseRef'
-import Usestate from './src/components/Usestate'
+import React from 'react';
+import {View, Text} from 'react-native';
+import Login from './src/components/Login';
+import MyTextInput from './src/components/MyTextInput';
+import NEWJSON from './src/components/NEWJSON';
+import Usecontext from './src/components/Usecontext';
+import Useeffect from './src/components/Useeffect';
+import Useimperative from './src/components/Useimperative';
+import UseLayout from './src/components/UseLayout';
+import UseofImages from './src/components/UseofImages';
+import UseRef from './src/components/UseRef';
+import Usestate from './src/components/Usestate';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SignUp from './src/components/SignUp';
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
+  // const name = 'enter email'
+  // function onChangeText  (incomingText) {
+  //   console.log('Getting data in app' + incomingText);
+  // }
 
-  const name = 'enter email'
-  function onChangeText  (incomingText) {
-    console.log('Getting data in app' + incomingText);
-  }
   return (
-    <View>
-    {/* <Usecontext></Usecontext> */}
-    {/* <Usestate></Usestate> */}
-    {/* <Useeffect></Useeffect> */}
-    {/* <UseRef/> */}
-    {/* <Useimperative></Useimperative> */}
-    {/* <UseLayout></UseLayout> */}
-    {/* <UseofImages></UseofImages> */}
-    {/* <NEWJSON></NEWJSON> */}
-    {/* <MyTextInput name={name}></MyTextInput> */}
-    <MyTextInput name={name} onChangeText={onChangeText}></MyTextInput>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+    
+    <Stack.Screen name="Login" component={Login}  options={{ headerShown: false }}/>
+    <Stack.Screen name="Images" component={UseofImages} />
+    <Stack.Screen name="SignUp" component={SignUp}  options={{ title: 'Create Account' }} />
 
-    </View>
-  )
+      {/* <Usecontext></Usecontext> */}
+      {/* <Usestate></Usestate> */}
+      {/* <Useeffect></Useeffect> */}
+      {/* <UseRef/> */}
+      {/* <Useimperative></Useimperative> */}
+      {/* <UseLayout></UseLayout> */}
+      {/* <UseofImages></UseofImages> */}
+      {/* <NEWJSON></NEWJSON> */}
+      {/* <MyTextInput name={name}></MyTextInput> */}
+      {/* <MyTextInput name={name} onChangeText={onChangeText}/> */}
+    </Stack.Navigator>
+    </NavigationContainer>
+  );
 }

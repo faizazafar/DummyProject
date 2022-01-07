@@ -14,9 +14,9 @@ import {
 const {width, height} = Dimensions.get('screen');
 
 const images = [
-  {image: require('../assets/flower.jpeg')},
-  {image: require('../assets/flower.jpeg')},
-  {image: require('../assets/flower.jpeg')},
+  {image: require('../assets/phone.jpg')},
+  {image: require('../assets/phone2.jpg')},
+  {image: require('../assets/phone3.jpg')},
 ];
 
 const UseofImages = () => {
@@ -31,7 +31,8 @@ const UseofImages = () => {
             horizontal={true}
             contentContainerStyle={{paddingVertical: 15}}
             style={{flex: 1}}>
-            {images.map(item => {
+            {images.map((item,ind) => {
+
               return (
                 <TouchableOpacity
                   style={{
@@ -41,7 +42,7 @@ const UseofImages = () => {
                     marginTop: 10,
                     backgroundColor: 'white',
                     // elevation: 13,
-                  }}>
+                  }}  key={ind}>
                   <Image
                     style={{
                       height: height / 2.5,
@@ -50,6 +51,7 @@ const UseofImages = () => {
                       borderRadius: 20,
                     }}
                     source={item.image}
+                    key={ind}
                   />
                 </TouchableOpacity>
               );
@@ -59,11 +61,11 @@ const UseofImages = () => {
           {show ? (
             <View>
               {
-                  images.map((item)=>{
+                  images.map((item, ind)=>{
 
                     return(
 
-                    <Image style={styles.squareratio} source={item.image}
+                    <Image style={styles.squareratio} source={item.image}  key={ind}
                     ></Image>
                     )
                   })
@@ -92,6 +94,6 @@ const styles = StyleSheet.create({
   squareratio: {
     width: 200,
     height: 200,
-    // borderRadius:100/2
+    borderRadius:200/2
   },
 });
