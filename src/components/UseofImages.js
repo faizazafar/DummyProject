@@ -14,9 +14,9 @@ import {
 const {width, height} = Dimensions.get('screen');
 
 const images = [
-  {image: require('../assets/phone.jpg')},
-  {image: require('../assets/phone2.jpg')},
-  {image: require('../assets/phone3.jpg')},
+  // {image: require('../assets/phone.jpg')},
+  // {image: require('../assets/phone2.jpg')},
+  // {image: require('../assets/phone3.jpg')},
 ];
 
 const UseofImages = () => {

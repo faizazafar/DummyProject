@@ -126,6 +126,8 @@ import Usestate from './src/components/Usestate';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/components/SignUp';
+import Apicalls from './src/components/Apicalls';
+import TodoApp from './src/components/TodoApp';
 
 const Stack = createNativeStackNavigator();
 
@@ -138,11 +140,15 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="TodoApp">
     
     <Stack.Screen name="Login" component={Login}  options={{ headerShown: false }}/>
     <Stack.Screen name="Images" component={UseofImages} />
     <Stack.Screen name="SignUp" component={SignUp}  options={{ title: 'Create Account' }} />
+    <Stack.Screen name="ApiCalls" component={Apicalls}  options={{ headerShown: false }}/>
+    <Stack.Screen name="TodoApp" component={TodoApp}  options={{ headerShown: false }}/>
+
+
 
       {/* <Usecontext></Usecontext> */}
       {/* <Usestate></Usestate> */}
