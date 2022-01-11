@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React,{useState  } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,52 +7,58 @@ import {
   TextInput,
   FlatList,
   Alert,
-  ScrollView,
   Button,
 } from 'react-native';
 import Feather from 'react-native-vector-icons/AntDesign';
-import Usestate from './Usestate';
 
-let today = new Date();
-let date =
-  today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-let time =
-  today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-let dateTime = date + ' ' + time;
 
 const TodoApp = () => {
   const [textInput, setTextInput] = useState();
-//   const [isedit, setedit] = useState(false);
-  const [todos, setTodos] = useState([
-    {id: 1, task: "eggs"},
-    {id: 2, task: 'Second'},
-  ]);
+  const [isedit, setedit] = useState(false);
+  const [todos, setTodos] = useState([]);
 
-
+  const [isEditItem, setEditItem] = useState(null);
 
   const Additem = () => {
-    const newTodo = {
-        id: dateTime,
+    if (!textInput) {
+      alert('please enter some tasks');
+    } else if (textInput && isedit) {
+      console.log('i am in new edit');
+
+      let temparray = todos.map(element => {
+        //   return element
+        if (element.id == isEditItem) {
+          return {...element, task: textInput};
+        }
+        return element;
+      });
+
+      setTodos(temparray);
+
+      setedit(false);
+      setTextInput('');
+      setEditItem(null);
+    } else {
+      const newTodo = {
+        id: new Date().getTime().toString(),
         task: textInput,
-      };    
-    console.log(textInput);
-    setTodos([...todos, newTodo]);
-    setTextInput('');
+      };
+      console.log(textInput);
+      setTodos([...todos, newTodo]);
+      setTextInput('');
+    }
   };
 
   const onEdit = (id, title) => {
+    let newEditItem = todos.find(element => {
+      return element.id == id;
+    });
+    console.log(newEditItem);
     console.log(id, title);
     console.log('editing');
-    setTextInput(title);
+    setTextInput(newEditItem.task);
+    setEditItem(id);
     setedit(true);
-  };
-  const EditItem = () => {
-    console.log('new edit ');
-    console.log(id)
-    // setTodos(todos.filter(todos => todos.id !== id));
-    // setTextInput('');
-
-    // setTodos([...todos, newTodo]);
   };
 
   const onDelete = (id, task) => {
@@ -67,6 +73,9 @@ const TodoApp = () => {
         style: 'cancel',
       },
     ]);
+    setedit(false);
+    setTextInput('');
+    setEditItem(null);
   };
 
   return (
@@ -96,8 +105,8 @@ const TodoApp = () => {
                 style={styles.subContainer}>
                 <TouchableOpacity
                   style={{flex: 0.9}}
-                  >
-                  <Text>{item.id}</Text>
+                  onPress={() => onEdit(item.id, item.task)}>
+                  <Text>{item.task} </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={{flex: 0.1}}>
