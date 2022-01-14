@@ -140,7 +140,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TodoApp">
+      <Stack.Navigator initialRouteName="SignUp">
     
     <Stack.Screen name="Login" component={Login}  options={{ headerShown: false }}/>
     <Stack.Screen name="Images" component={UseofImages} />
