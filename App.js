@@ -128,6 +128,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from './src/components/SignUp';
 import Apicalls from './src/components/Apicalls';
 import TodoApp from './src/components/TodoApp';
+import Profile from './src/components/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -140,9 +141,10 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignUp">
+      <Stack.Navigator initialRouteName="Profile">
     
     <Stack.Screen name="Login" component={Login}  options={{ headerShown: false }}/>
+    <Stack.Screen name="Profile" component={Profile}  options={{ headerShown: false }}/>
     <Stack.Screen name="Images" component={UseofImages} />
     <Stack.Screen name="SignUp" component={SignUp}  options={{ title: 'Create Account' }} />
     <Stack.Screen name="ApiCalls" component={Apicalls}  options={{ headerShown: false }}/>
