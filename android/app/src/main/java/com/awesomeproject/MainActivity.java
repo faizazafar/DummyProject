@@ -1,6 +1,8 @@
 package com.awesomeproject;
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
+// import com.facebook.react.bridge.JSIModulePackage;
+// import com.swmansion.reanimated.ReanimatedJSIModulePackage;
 
 public class MainActivity extends ReactActivity {
 
@@ -17,3 +19,10 @@ public class MainActivity extends ReactActivity {
   super.onCreate(null);
 }
 }
+
+// @Override 
+// protected JSIModulePackage getJSIModulePackage()
+// { return new ReanimatedJSIModulePackage(); }
+
+
+// }

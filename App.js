@@ -129,6 +129,7 @@ import SignUp from './src/components/SignUp';
 import Apicalls from './src/components/Apicalls';
 import TodoApp from './src/components/TodoApp';
 import Profile from './src/components/Profile';
+import Profilepicker from './src/components/Profilepicker'
 
 const Stack = createNativeStackNavigator();
 
@@ -149,6 +150,8 @@ export default function App() {
     <Stack.Screen name="SignUp" component={SignUp}  options={{ title: 'Create Account' }} />
     <Stack.Screen name="ApiCalls" component={Apicalls}  options={{ headerShown: false }}/>
     <Stack.Screen name="TodoApp" component={TodoApp}  options={{ headerShown: false }}/>
+    <Stack.Screen name="Picker" component={Profilepicker}  options={{ headerShown: false }}/>
+
 
 
 
