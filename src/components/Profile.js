@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  Dimensions,
   TextInput,
   SafeAreaView,
   TouchableOpacity,
@@ -12,17 +11,45 @@ import {
 } from 'react-native';
 import Ant from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-import {Picker} from '@react-native-picker/picker';
-
-import SelectDropdown from 'react-native-select-dropdown';
-
-// let data = [{value: 'Pakistan'}, {value: 'India'}, {value: 'Saudi'}];
-const countries = ['Egypt', 'Canada', 'Australia', 'Ireland'];
-
-// const {width, height} = Dimensions.get('screen');
+import * as ImagePicker from "react-native-image-picker"
 
 const Profile = () => {
-  //   const [showText, setShowText] = useState(true);
+
+  const [ path , setPath ]= useState('')
+
+useEffect(()=>{
+  console.log(path)
+
+}, [path])
+  // console.log(file.fileData)
+  const handleChoosePhoto = () => {
+   
+
+    console.log('hello');
+
+    ImagePicker.launchImageLibrary(
+      {
+        mediaType: 'photo',
+        includeBase64: false
+      },
+      (response) => {
+        console.log(JSON.stringify(response));
+
+        console.log(response.assets.map(a=>a.uri));
+        let source = response.assets.map(a=>a.uri)
+        setPath(source)
+        // setFile({
+        //   filePath: response,
+        //   fileData: response.data,
+        //   fileUri: response.uri
+        // });
+        // console.log(fileUri)
+
+      },
+    )
+  };
+
+
   const [showText, setShowText] = useState({
     textone: false,
     texttwo: false,
@@ -38,13 +65,21 @@ const Profile = () => {
 
         <View style={{alignSelf: 'center'}}>
           <View style={styles.profileimage}>
+           
             <Image
               resizeMode="center"
               style={styles.image}
-              source={require('../assets/pro.png')}></Image>
+              //  source={{ uri: filePath.path}} 
+              source={require('../assets/pro.png')}
+              // source={{ uri: 'data:image/jpeg;base64,'+path}}
+              // source={{
+              //   uri: 'data:image/jpeg;base64,' + filePath.data,
+              // }}
+              >
+              </Image>
           </View>
           <View style={styles.cam}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => handleChoosePhoto()}>
               <Ant name={'camera'} size={22} color="#246FFF" />
             </TouchableOpacity>
           </View>
@@ -125,11 +160,23 @@ const Profile = () => {
           style={{
             alignSelf: 'center',
             alignItems: 'center',
-            marginVertical: 10
+            marginVertical: 10,
           }}>
-          <TouchableOpacity style={{ backgroundColor:"#246FFF" , padding: 20 , width: 320
-        , borderRadius: 4}}>
-            <Text style={{ color: "white" , alignItems:"center" , alignSelf:"center"}}>Register</Text>
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#246FFF',
+              padding: 20,
+              width: 320,
+              borderRadius: 4,
+            }}>
+            <Text
+              style={{
+                color: 'white',
+                alignItems: 'center',
+                alignSelf: 'center',
+              }}>
+              Register
+            </Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
