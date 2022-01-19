@@ -16,7 +16,7 @@ import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
 
 const Profile = () => {
-  const sheetRef = React.useRef(null);
+   bs = React.useRef();
    fall = new Animated.Value(1);
 
    renderInner = () => (
@@ -121,7 +121,7 @@ useEffect(()=>{
               </Image>
           </View>
           <View style={styles.cam}>
-            <TouchableOpacity onPress={()=> sheetRef.current.snapTo(0)}>
+            <TouchableOpacity onPress={()=> this.bs.current.snapTo(0)}>
               <Ant name={'camera'} size={22} color="#246FFF" />
             </TouchableOpacity>
           </View>

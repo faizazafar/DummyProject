@@ -130,6 +130,11 @@ import Apicalls from './src/components/Apicalls';
 import TodoApp from './src/components/TodoApp';
 import Profile from './src/components/Profile';
 import Profilepicker from './src/components/Profilepicker'
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs([
+  "[react-native-gesture-handler] Seems like you\'re using an old API with gesture components, check out new Gestures system!",
+]);
 
 const Stack = createNativeStackNavigator();
 
